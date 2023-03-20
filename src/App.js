@@ -3,21 +3,23 @@ import { ChatContainer } from "./containers/ChatContainer";
 import { ImageContainer } from "./containers/ImageContainer";
 import { InventoryContainer } from "./containers/InventoryContainer";
 import { initialiseApp } from "./AppInitialiser";
+import Sidebar from "./containers/Sidebar";
+import { deleteGame, deletePlayer } from "./Api";
 
 function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
   // If the data is found, it's parsed from a JSON string back into its original data structure (array) and used as the initial state.
   // If no data is found, an empty array is used as the initial state.
   const [messages, setMessages] = useState(() => {
-    const storedMessages = localStorage.getItem("messages");
+    const storedMessages = sessionStorage.getItem("messages");
     return storedMessages ? JSON.parse(storedMessages) : [];
   });
   const [playerItems, setPlayerItems] = useState(() => {
-    const storedPlayerItems = localStorage.getItem("playerItems");
+    const storedPlayerItems = sessionStorage.getItem("playerItems");
     return storedPlayerItems ? JSON.parse(storedPlayerItems) : [];
   });
   const [roomsYouCanEnter, setRoomsYouCanEnter] = useState(() => {
-    const storedRooms = localStorage.getItem("roomsYouCanEnter");
+    const storedRooms = sessionStorage.getItem("roomsYouCanEnter");
     return storedRooms ? JSON.parse(storedRooms) : [];
   });
 
@@ -43,31 +45,42 @@ function App() {
   // When the state changes, the hook updates the sessionStorage with the latest state data.
   // The data is converted to a JSON string using JSON.stringify before being saved to the sessionStorage.
   useEffect(() => {
-    localStorage.setItem("messages", JSON.stringify(messages));
+    sessionStorage.setItem("messages", JSON.stringify(messages));
   }, [messages]);
 
   useEffect(() => {
-    localStorage.setItem("playerItems", JSON.stringify(playerItems));
+    sessionStorage.setItem("playerItems", JSON.stringify(playerItems));
   }, [playerItems]);
 
   useEffect(() => {
-    localStorage.setItem("roomsYouCanEnter", JSON.stringify(roomsYouCanEnter));
+    sessionStorage.setItem("roomsYouCanEnter", JSON.stringify(roomsYouCanEnter));
   }, [roomsYouCanEnter]);
 
-  const resetGame = () => {
+  const resetGame = async () => {
     sessionStorage.clear();
     setMessages([]);
     setPlayerItems([]);
     setRoomsYouCanEnter([]);
-    initialiseApp('player1', '1', setMessages, setPlayerItems, setRoomsYouCanEnter);
-  }
+    await deleteGame(1);
+    await deletePlayer(1);
+    initialiseApp(
+      "player1",
+      "1",
+      setMessages,
+      setPlayerItems,
+      setRoomsYouCanEnter
+    );
+  };
 
   return (
     <div className="h-screen">
       <ImageContainer roomsYouCanEnter={roomsYouCanEnter} />
       <div className="flex h-1/2">
-        <InventoryContainer playerItems={playerItems} />
-        <ChatContainer messages={messages} />
+        <Sidebar resetGame={resetGame} />
+        <div className="flex flex-1">
+          <InventoryContainer playerItems={playerItems} />
+          <ChatContainer messages={messages} />
+        </div>
       </div>
     </div>
   );
