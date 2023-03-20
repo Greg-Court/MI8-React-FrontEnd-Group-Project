@@ -5,20 +5,20 @@ import { InventoryContainer } from "./containers/InventoryContainer";
 import { initialiseApp } from "./AppInitialiser";
 
 function App() {
-  const [message, setMessage] = useState('');
-  const [items, setItems] = useState([]);
+  const [messages, setMessages] = useState([]);
+  const [playerItems, setPlayerItems] = useState([]);
   const [roomsYouCanEnter, setRoomsYouCanEnter] = useState([]);
   
   useEffect(() => {
-    initialiseApp('player1', '1', setMessage, setItems, setRoomsYouCanEnter);
+    initialiseApp('player1', '1', setMessages, setPlayerItems, setRoomsYouCanEnter);
   }, []);
 
   return (
     <div className="h-screen">
       <ImageContainer roomsYouCanEnter={roomsYouCanEnter}/>
       <div className="flex h-1/2">
-        <InventoryContainer items={items}/>
-        <ChatContainer message={message}/>
+        <InventoryContainer playerItems={playerItems}/>
+        <ChatContainer messages={messages}/>
       </div>
     </div>
   );

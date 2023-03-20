@@ -1,16 +1,15 @@
 export const initialiseApp = async (
   playerName,
   gameId,
-  setMessage,
-  setItems,
+  setMessages,
+  setPlayerItems,
   setRoomsYouCanEnter
 ) => {
   try {
     const newPlayerMessage = await createNewPlayer(playerName);
-    setMessage(newPlayerMessage);
     const response = await createNewGame(gameId);
-    setMessage(response.reply);
-    setItems(response.inventory);
+    setMessages([newPlayerMessage, response.reply]);
+    setPlayerItems(response.inventory);
     setRoomsYouCanEnter(response.roomsYouCanEnter);
   } catch (error) {
     console.log(error);

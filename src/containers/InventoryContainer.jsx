@@ -45,9 +45,7 @@ export const InventoryContainer = () => {
     return (
       <li><InventoryItem item={`${items[item].title}`} key={i} itemIcon={`${items[item].image}`} /></li>
     );
-  })
-  
-   
+  })   
 
   return (
     <div className="bg-green-600 w-1/2">
