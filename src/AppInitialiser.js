@@ -6,11 +6,12 @@ export const initialiseApp = async (
   setRoomsYouCanEnter
 ) => {
   try {
-    const response = await createNewPlayer(playerName);
+    const newPlayerMessage = await createNewPlayer(playerName);
+    setMessage(newPlayerMessage);
+    const response = await createNewGame(gameId);
     setMessage(response.reply);
     setItems(response.inventory);
     setRoomsYouCanEnter(response.roomsYouCanEnter);
-    await createNewGame(gameId);
   } catch (error) {
     console.log(error);
   }
@@ -22,7 +23,6 @@ const createNewPlayer = async (playerName) => {
       method: "POST",
     });
     const data = await response.text();
-    console.log(data);
     return data;
   } catch (error) {
     console.log(error);
@@ -35,7 +35,7 @@ const createNewGame = async (gameId) => {
       method: "POST",
     });
     const data = await response.json();
-    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }
