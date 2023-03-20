@@ -1,4 +1,4 @@
-export const ChatBubbleRecieve = () => {
+export const ChatBubbleReceive = ({text}) => {
   return (
     <div className="p-3 max-w-xl mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4 mt-10 justify-start">
       <div className="shrink-0">
@@ -11,8 +11,7 @@ export const ChatBubbleRecieve = () => {
       <div>
         <div className="text-xl font-medium text-black">M</div>
         <p className="text-slate-500">
-          There is a reception desk with a bored looking
-          receptionist. By the elevators you see some guards."
+          {text}
         </p>
       </div>
     </div>
