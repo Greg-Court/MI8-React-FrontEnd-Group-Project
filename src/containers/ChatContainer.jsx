@@ -12,6 +12,7 @@ export const ChatContainer = () => {
     <div className="bg-blue-500 w-1/2 p-3">
         <ChatBubbleSend/>
         <ChatBubbleRecieve/>
+        <p>test</p>
     </div>
   )
 }
