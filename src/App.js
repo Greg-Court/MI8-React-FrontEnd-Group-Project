@@ -4,10 +4,9 @@ import { InventoryContainer } from "./containers/InventoryContainer";
 
 function App() {
   return (
-    <div className="app">
-      <p className="bg-red-500">Hello WOrld</p>
+    <div className="app h-screen">
       <ImageContainer/>
-      <div className="flex">
+      <div className="flex h-1/2">
         <InventoryContainer/>
         <ChatContainer/>
       </div>
