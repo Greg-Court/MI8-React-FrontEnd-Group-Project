@@ -10,7 +10,7 @@ function App() {
   const [roomsYouCanEnter, setRoomsYouCanEnter] = useState([]);
   
   useEffect(() => {
-    initialiseApp('player1', '1', setMessage);
+    initialiseApp('player1', '1', setMessage, setItems, setRoomsYouCanEnter);
   }, []);
 
   return (

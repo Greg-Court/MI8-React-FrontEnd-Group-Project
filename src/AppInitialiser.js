@@ -1,13 +1,21 @@
-export const initialiseApp = async (playerName, gameId, setMessage) => {
-    try {
-      const response = await createNewPlayer(playerName);
-      setMessage(response);
-      await createNewGame(gameId);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-  
+export const initialiseApp = async (
+  playerName,
+  gameId,
+  setMessage,
+  setItems,
+  setRoomsYouCanEnter
+) => {
+  try {
+    const response = await createNewPlayer(playerName);
+    setMessage(response.reply);
+    setItems(response.inventory);
+    setRoomsYouCanEnter(response.roomsYouCanEnter);
+    await createNewGame(gameId);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 const createNewPlayer = async (playerName) => {
   try {
     const response = await fetch(`http://localhost:8080/player/${playerName}`, {
