@@ -8,7 +8,7 @@ import keycard from "../assets/items/keycard.png"
 import tracker from "../assets/items/tracker.png"
 
 export const InventoryContainer = () => {
-  const [items, setItems] = useState([
+  const items= [
     {
       id: 1,
       title: "Torch",
@@ -39,13 +39,27 @@ export const InventoryContainer = () => {
       title: "Tracker",
       image: tracker
     }
-  ]);
+  ];
 
   const itemList = Object.keys(items).map((item,i) => {
     return (
-      <li><InventoryItem item={`${items[item].title}`} key={i} itemIcon={`${items[item].image}`} /></li>
+      <li><InventoryItem item={`${items[item].title}`} key={i} itemIcon={`${items[item].image}`} text={`${items[item].title}`} /></li>
     );
-  })   
+  })
+
+  const useItem = async (itemName) => {
+    try {
+      const response = await fetch(`http://localhost:8080/player/1/${itemName}`, {
+        method: "PATCH",
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+   
+
 
   return (
     <div className="bg-green-600 w-1/2">
