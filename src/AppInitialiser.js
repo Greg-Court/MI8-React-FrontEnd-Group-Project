@@ -8,7 +8,10 @@ export const initialiseApp = async (
   try {
     const newPlayerMessage = await createNewPlayer(playerName);
     const response = await createNewGame(gameId);
-    setMessages([newPlayerMessage, response.reply]);
+    setMessages([
+        { type: 'receive', text: newPlayerMessage },
+        { type: 'receive', text: response.reply },
+      ]);
     setPlayerItems(response.inventory);
     setRoomsYouCanEnter(response.roomsYouCanEnter);
   } catch (error) {

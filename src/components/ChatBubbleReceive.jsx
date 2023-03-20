@@ -1,6 +1,6 @@
 export const ChatBubbleReceive = ({text}) => {
   return (
-    <div className="p-3 max-w-xl mx-auto bg-white rounded-xl shadow-lg flex items-center space-x-4 mt-10 justify-start">
+    <div className="p-3 max-w-xl bg-white rounded-xl shadow-lg flex items-center space-x-4 mt-10 mx-0 justify-start">
       <div className="shrink-0">
         <img
           src="https://cryptologos.cc/logos/chatcoin-chat-logo.svg?v=024"
