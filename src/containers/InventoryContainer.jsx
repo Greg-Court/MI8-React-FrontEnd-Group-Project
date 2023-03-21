@@ -8,8 +8,7 @@ import keycard from "../assets/items/keycard.png"
 import tracker from "../assets/items/tracker.png"
 import {useItem} from "../Api";
 
-export const InventoryContainer = ({playerItems, setPlayerItems, itemName}) => {
-
+export const InventoryContainer = ({playerItems, setPlayerItems}) => {
 
 
   const items= [
@@ -45,41 +44,20 @@ export const InventoryContainer = ({playerItems, setPlayerItems, itemName}) => {
     }
   ];
 
-
-  const itemsToDisplay = Object.keys(items).map((item,i) => {
-    <li key={i}>
-      {
-        playerItems.map((gameItem, index) => )
-      }
+  const itemsToDisplay = items
+  .filter((item) => playerItems && playerItems.includes(item.title.toLowerCase()))
+  .map((item) => (
+    <li key={item.id}>
+      <InventoryItem
+        item={item.title}
+        itemIcon={item.image}
+        text={item.title}
+      />
     </li>
-
-  for (let x = 0; x < playerItems.length; x++){
-    if(playerItems[x] === )
-  }
-  
-  items.filter((item) => 
-    item.title.toLowerCase().includes(playerItems)
-    ).map((item,i)=> 
-      <li><InventoryItem 
-        item={`${items[item].title}`} 
-        key={i} itemIcon={`${items[item].image}`} 
-        text={`${items[item].title}`} 
-      /></li>);
-  
-  
-  
-  // const hiddenItemList = Object.keys(items).map((item,i) => {
-  //   return (
-  //     <li><InventoryItem 
-  //       item={`${items[item].title}`} 
-  //       key={i} itemIcon={`${items[item].image}`} 
-  //       text={`${items[item].title}`} 
-        
-  //     /></li>
-  //   );
-  // })
+  ));
 
   
+
 
   return (
     <div className="bg-green-600 w-1/2">
