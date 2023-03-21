@@ -3,9 +3,9 @@ import React from "react";
 
 export const InventoryItem = ({item, itemIcon, text, }) => {
   
-  const handleButtonClick = () => {
+  // const handleButtonClick = () => {
     
-  }
+  // }
 
 
   return (
