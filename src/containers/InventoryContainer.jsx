@@ -64,7 +64,7 @@ export const InventoryContainer = ({playerItems, setPlayerItems, setMessages, se
 
 
   return (
-    <div className="bg-green-600 w-1/2">
+    <div className="bg-green-600 w-1/2 shadow-lg">
       <ul>
         {itemsToDisplay}
       </ul>

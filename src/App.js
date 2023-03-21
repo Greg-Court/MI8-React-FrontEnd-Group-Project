@@ -35,7 +35,6 @@ function App() {
     ) {
       initialiseApp(
         "player1",
-        "1",
         setMessages,
         setPlayerItems,
         setRoomsYouCanEnter

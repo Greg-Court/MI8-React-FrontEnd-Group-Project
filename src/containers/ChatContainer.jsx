@@ -18,7 +18,7 @@ export const ChatContainer = ({ messages }) => {
   };
 
   return (
-    <div className="bg-blue-500 w-1/2 p-3 overflow-y-auto">
+    <div className="bg-blue-500 w-1/2 p-3 overflow-y-auto shadow-lg">
       {messages.map((msg, index) => {
         return msg.type === "receive" ? (
           <div key={index} className="w-full flex justify-start">
