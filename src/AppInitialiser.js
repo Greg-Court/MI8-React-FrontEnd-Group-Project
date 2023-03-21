@@ -6,18 +6,24 @@ export const initialiseApp = async (
   playerName,
   setMessages,
   setPlayerItems,
-  setRoomsYouCanEnter
+  setRoomsYouCanEnter,
+  setGameId,
+  setPlayerId
 ) => {
   try {
     const newPlayer = await createNewPlayer(playerName);
     console.log(newPlayer);
-    const response = await createNewGame(1);
+    const gameReply = await createNewGame(newPlayer.id);
+    console.log(gameReply);
     setMessages([
         { type: 'receive', text: newPlayerMessage },
-        { type: 'receive', text: response.reply },
+        { type: 'receive', text: gameReply.reply },
       ]);
-    setPlayerItems(response.inventory);
-    setRoomsYouCanEnter(response.roomsYouCanEnter);
+    setPlayerItems(gameReply.inventory);
+    setRoomsYouCanEnter(gameReply.roomsYouCanEnter);
+    setPlayerId(newPlayer.id)
+    // setGameId is working but completely fake. gameReply doesn't return the game ID.....
+    setGameId(gameReply.gameId)
   } catch (error) {
     console.log(error);
   }

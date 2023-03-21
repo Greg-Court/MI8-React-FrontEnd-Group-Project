@@ -22,26 +22,23 @@ function App() {
     const storedRooms = sessionStorage.getItem("roomsYouCanEnter");
     return storedRooms ? JSON.parse(storedRooms) : [];
   });
+  const [playerId, setPlayerId] = useState(null);
+  const [gameId, setGameId] = useState(null);
 
   // const [isAppInitialised, setIsAppInitialised] = useState(false);
 
   // checks if all state variables are empty arrays (i.e., no data is found in sessionStorage), and if so,
   // it calls the initialiseApp function to fetch data from the backend and set the initial state.
   useEffect(() => {
-    if (
-      messages.length === 0 &&
-      playerItems.length === 0 &&
-      roomsYouCanEnter.length === 0
-    ) {
-      initialiseApp(
-        "player1",
-        setMessages,
-        setPlayerItems,
-        setRoomsYouCanEnter
-      );
-    }
+    initialiseApp(
+      "James Bondage",
+      setMessages,
+      setPlayerItems,
+      setRoomsYouCanEnter,
+      setPlayerId,
+      setGameId
+    );
   }, []);
-  
 
   // UseEffect hooks listen for changes in their respective state variables (messages, playerItems, and roomsYouCanEnter).
   // When the state changes, the hook updates the sessionStorage with the latest state data.
@@ -55,32 +52,53 @@ function App() {
   }, [playerItems]);
 
   useEffect(() => {
-    sessionStorage.setItem("roomsYouCanEnter", JSON.stringify(roomsYouCanEnter));
+    sessionStorage.setItem(
+      "roomsYouCanEnter",
+      JSON.stringify(roomsYouCanEnter)
+    );
   }, [roomsYouCanEnter]);
 
   const resetGame = async () => {
-    sessionStorage.clear();
-    setMessages([]);
-    setPlayerItems([]);
-    setRoomsYouCanEnter([]);
-    await deleteGame(1);
-    await deletePlayer(1);
-    initialiseApp(
-      "player1",
-      "1",
-      setMessages,
-      setPlayerItems,
-      setRoomsYouCanEnter
-    );
+    try {
+      if (playerId !== null && gameId !== null) {
+        await deleteGame(gameId);
+        await deletePlayer(playerId);
+      }
+      sessionStorage.clear();
+      setMessages([]);
+      setPlayerItems([]);
+      setRoomsYouCanEnter([]);
+      initialiseApp(
+        "James Bondage",
+        setMessages,
+        setPlayerItems,
+        setRoomsYouCanEnter,
+        setPlayerId,
+        setGameId
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <div className="h-screen">
-      <ImageContainer roomsYouCanEnter={roomsYouCanEnter} />
+      <ImageContainer
+        roomsYouCanEnter={roomsYouCanEnter}
+        setMessages={setMessages}
+        messages={messages}
+        setPlayerItems={setPlayerItems}
+      />
       <div className="flex h-1/2">
         <Sidebar resetGame={resetGame} />
         <div className="flex flex-1">
-          <InventoryContainer setMessages={setMessages} setPlayerItems={setPlayerItems} setRoomsYouCanEnter={setRoomsYouCanEnter} playerItems={playerItems} messages={messages} />
+          <InventoryContainer
+            setMessages={setMessages}
+            setPlayerItems={setPlayerItems}
+            setRoomsYouCanEnter={setRoomsYouCanEnter}
+            playerItems={playerItems}
+            messages={messages}
+          />
           <ChatContainer messages={messages} />
         </div>
       </div>

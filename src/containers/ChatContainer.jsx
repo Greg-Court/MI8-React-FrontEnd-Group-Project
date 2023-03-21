@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChatBubbleReceive } from "../components/ChatBubbleReceive";
 import { ChatBubbleSend } from "../components/ChatBubbleSend";
-import whatsappbackground from "../assets/other/whatsappbackrgound.jpeg"
+import amrdb5 from "../assets/other/amrdb5.jpeg"
 
 export const ChatContainer = ({ messages }) => {
   // creates a new ref called messagesEndRef
@@ -19,7 +19,7 @@ export const ChatContainer = ({ messages }) => {
   };
 
   return (
-    <div style= {{backgroundImage: `url(${whatsappbackground})`}} className="bg-cover w-1/2 p-3 overflow-y-auto shadow-lg">
+    <div style={{backgroundImage: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.75)), url(${amrdb5})`}} className="bg-cover w-1/2 p-3 overflow-y-auto shadow-2xl">
       {messages.map((msg, index) => {
         return msg.type === "receive" ? (
           <div key={index} className="w-full flex justify-start">

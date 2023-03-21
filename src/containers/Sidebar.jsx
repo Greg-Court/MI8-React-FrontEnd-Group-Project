@@ -11,7 +11,7 @@ const Sidebar = ({resetGame}) => {
 
   return (
     <div
-      className="fixed top-[1/2] h-full w-16 m-0 flex flex-col bg-transparent text-white"
+      className="fixed top-1/2 w-16 h-1/2 m-0 flex flex-col bg-transparent text-white justify-center flex-gro"
     >
         <SidebarIcon icon={<BsPlus size="32" />} text="Start New Game"/>
         <SidebarIcon icon={<AiOutlineCloud size="28" />} text="Load Existing Game"/>

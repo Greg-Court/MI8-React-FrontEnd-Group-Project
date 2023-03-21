@@ -5,7 +5,7 @@ export const createNewPlayer = async (playerName) => {
     const response = await fetch(`${BASE_URL}/player/${playerName}`, {
       method: 'POST',
     });
-    const data = await response.text();
+    const data = await response.json();
     return data;
   } catch (error) {
     console.log(error);
