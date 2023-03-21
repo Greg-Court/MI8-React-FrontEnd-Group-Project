@@ -124,7 +124,7 @@ export const enterRoom = async (gameId, room) => {
     }
   };
   
-  export const useItem = async (playerId, itemName) => {
+  export const playerUseItem = async (playerId, itemName) => {
     try {
       const response = await fetch(`${BASE_URL}/player/${playerId}/${itemName}`, {
         method: 'PATCH',

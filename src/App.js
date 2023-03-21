@@ -81,7 +81,7 @@ function App() {
       <div className="flex h-1/2">
         <Sidebar resetGame={resetGame} />
         <div className="flex flex-1">
-          <InventoryContainer playerItems={playerItems} />
+          <InventoryContainer setMessages={setMessages} setPlayerItems={setPlayerItems} setRoomsYouCanEnter={setRoomsYouCanEnter} playerItems={playerItems} messages={messages} />
           <ChatContainer messages={messages} />
         </div>
       </div>

@@ -1,18 +1,32 @@
 import React from "react";
-import {useItem} from "../Api";
+import {playerUseItem} from "../Api";
 
 
-export const InventoryItem = ({item, itemIcon, text, playerId, setMessages }) => {
+
+export const InventoryItem = ({item, itemIcon, text, messages,
+  setMessages,
+  setPlayerItems,
+  setRoomsYouCanEnter}) => {
   
-  // const handleUseItem = () => {
-  //   useItem(playerId, item);
-  //   setMessages
-  // }
+  const handleUseItem = async () => {
+    try{
+      const nextMoveResponse = await playerUseItem(1, item.toLowerCase());
+      setMessages([...messages,
+        { type: 'send', text: `I just used ${item}` },
+        { type: 'receive', text: nextMoveResponse.reply }
+      ]);
+      setPlayerItems(nextMoveResponse.inventory);
+      setRoomsYouCanEnter(nextMoveResponse.roomsYouCanEnter);
+      console.log(nextMoveResponse)
+    } catch (error) {
+      console.log(error);
+    } 
+  };
 
 
   return (
   <div className='flex items-center'>
-    <button  className="p-3 max-w-xl mx-auto bg-white hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-xl shadow-lg flex items-center space-x-4 mt-2 justify-start">
+    <button onClick={handleUseItem} className="p-3 max-w-xl mx-auto bg-white hover:bg-green-400 text-white font-bold py-2 px-4 border-b-4 border-green-700 hover:border-green-500 rounded-xl shadow-lg flex items-center space-x-4 mt-2 justify-start">
       <div className="shrink-0">
         <img
           src={itemIcon}

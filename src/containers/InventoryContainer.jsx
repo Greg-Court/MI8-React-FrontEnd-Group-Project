@@ -8,7 +8,7 @@ import keycard from "../assets/items/keycard.png"
 import tracker from "../assets/items/tracker.png"
 import {useItem} from "../Api";
 
-export const InventoryContainer = ({playerItems, setPlayerItems}) => {
+export const InventoryContainer = ({playerItems, setPlayerItems, setMessages, setRoomsYouCanEnter, messages}) => {
 
 
   const items= [
@@ -52,6 +52,10 @@ export const InventoryContainer = ({playerItems, setPlayerItems}) => {
         item={item.title}
         itemIcon={item.image}
         text={item.title}
+        setMessages={setMessages}
+        setPlayerItems={setPlayerItems}
+        setRoomsYouCanEnter={setRoomsYouCanEnter}
+        messages={messages}
       />
     </li>
   ));
