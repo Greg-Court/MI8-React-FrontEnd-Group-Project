@@ -40,6 +40,7 @@ function App() {
       );
     }
   }, []);
+  
 
   // UseEffect hooks listen for changes in their respective state variables (messages, playerItems, and roomsYouCanEnter).
   // When the state changes, the hook updates the sessionStorage with the latest state data.
@@ -63,7 +64,7 @@ function App() {
     setRoomsYouCanEnter([]);
     await deleteGame(1);
     await deletePlayer(1);
-    console.log("GAME RESET UUUUUUUUUUUUUUUUU!!!!!!")
+    console.log("GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET ")
     initialiseApp(
       "player1",
       "1",
