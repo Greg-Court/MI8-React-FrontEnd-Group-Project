@@ -12,9 +12,10 @@ export const createNewPlayer = async (playerName) => {
   }
 };
 
-export const createNewGame = async (gameId) => {
+// game is created that is associated with playerId playerId. Do not put a game id yourself!
+export const createNewGame = async (playerId) => {
   try {
-    const response = await fetch(`${BASE_URL}/game/${gameId}`, {
+    const response = await fetch(`${BASE_URL}/game/${playerId}`, {
       method: 'POST',
     });
     const data = await response.json();

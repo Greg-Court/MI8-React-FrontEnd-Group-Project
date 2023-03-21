@@ -63,6 +63,7 @@ function App() {
     setRoomsYouCanEnter([]);
     await deleteGame(1);
     await deletePlayer(1);
+    console.log("GAME RESET UUUUUUUUUUUUUUUUU!!!!!!")
     initialiseApp(
       "player1",
       "1",

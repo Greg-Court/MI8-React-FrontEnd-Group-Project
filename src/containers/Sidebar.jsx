@@ -1,34 +1,31 @@
 import { BsPlus, BsGearFill } from 'react-icons/bs';
-import { AiFillHome, AiOutlineCloud } from 'react-icons/ai';
+import { AiOutlineCloud } from 'react-icons/ai';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { MdLeaderboard } from 'react-icons/md';
 
 const Sidebar = ({resetGame}) => {
 
-
+  const handleResetClick = () => {
+    resetGame();
+  };
 
   return (
     <div
-      className="top-[1/2] h-full w-16 m-0 flex flex-col bg-gray-900 text-white shadow-lg"
+      className="fixed top-[1/2] h-full w-16 m-0 flex flex-col bg-transparent text-white"
     >
-        <SidebarIcon icon={<AiFillHome size="28" />} text="Main Menu" />
         <SidebarIcon icon={<BsPlus size="32" />} text="Start New Game"/>
-        <SidebarIcon icon={<AiOutlineCloud size="32" />} text="Load Existing Game"/>
+        <SidebarIcon icon={<AiOutlineCloud size="28" />} text="Load Existing Game"/>
         <SidebarIcon icon={<MdLeaderboard size="20" />} text="Leaderboard" />
-        <SidebarIcon icon={<VscDebugRestart size="20" />} text="Reset Game" resetGame={resetGame}/>
+        <SidebarIcon icon={<VscDebugRestart size="20" />} text="Reset Game" onClick={handleResetClick}/>
         <SidebarIcon icon={<BsGearFill size="22" />} text="Settings" />
     </div>
   );
 };
  
-const SidebarIcon = ({icon, text, resetGame}) => {
-
-  const handleClick = () => {
-    resetGame();
-  };
+const SidebarIcon = ({icon, text, onClick}) => {
 
   return (
-    <div className="sidebar-icon group" onClick={handleClick}>
+    <div className="sidebar-icon group" onClick={onClick}>
         {icon}
         <span className="sidebar-tooltip group-hover:scale-100">
             {text}
