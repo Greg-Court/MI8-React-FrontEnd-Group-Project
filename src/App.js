@@ -23,6 +23,8 @@ function App() {
     return storedRooms ? JSON.parse(storedRooms) : [];
   });
 
+  // const [isAppInitialised, setIsAppInitialised] = useState(false);
+
   // checks if all state variables are empty arrays (i.e., no data is found in sessionStorage), and if so,
   // it calls the initialiseApp function to fetch data from the backend and set the initial state.
   useEffect(() => {
@@ -64,7 +66,6 @@ function App() {
     setRoomsYouCanEnter([]);
     await deleteGame(1);
     await deletePlayer(1);
-    console.log("GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET GAME RESET ")
     initialiseApp(
       "player1",
       "1",
