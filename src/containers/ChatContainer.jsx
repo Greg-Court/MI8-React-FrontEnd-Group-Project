@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { ChatBubbleReceive } from "../components/ChatBubbleReceive";
 import { ChatBubbleSend } from "../components/ChatBubbleSend";
+import whatsappbackground from "../assets/other/whatsappbackrgound.jpeg"
 
 export const ChatContainer = ({ messages }) => {
   // creates a new ref called messagesEndRef
@@ -18,7 +19,7 @@ export const ChatContainer = ({ messages }) => {
   };
 
   return (
-    <div className="bg-blue-500 w-1/2 p-3 overflow-y-auto shadow-lg">
+    <div style= {{backgroundImage: `url(${whatsappbackground})`}} className="bg-cover w-1/2 p-3 overflow-y-auto shadow-lg">
       {messages.map((msg, index) => {
         return msg.type === "receive" ? (
           <div key={index} className="w-full flex justify-start">

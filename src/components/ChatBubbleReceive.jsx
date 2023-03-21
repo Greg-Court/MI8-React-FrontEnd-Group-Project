@@ -1,9 +1,11 @@
+import mpic from "../assets/other/mpic.png"
+
 export const ChatBubbleReceive = ({text}) => {
   return (
     <div className="p-3 max-w-xl bg-white rounded-xl shadow-lg flex items-center space-x-4 mt-5 mx-0 justify-start">
       <div className="shrink-0">
         <img
-          src="https://cryptologos.cc/logos/chatcoin-chat-logo.svg?v=024"
+          src={mpic}
           alt="ChitChat Logo"
           className="h-12 w-12"
         />
