@@ -12,6 +12,7 @@ import weaponsbg from "../assets/other/weaponsbg.jpeg";
 export const InventoryContainer = ({
   playerItems,
   setPlayerItems,
+  playerId,
   setMessages,
   setRoomsYouCanEnter,
   messages,
@@ -63,6 +64,7 @@ export const InventoryContainer = ({
           setPlayerItems={setPlayerItems}
           setRoomsYouCanEnter={setRoomsYouCanEnter}
           messages={messages}
+          playerId={playerId}
         />
       </li>
     ));

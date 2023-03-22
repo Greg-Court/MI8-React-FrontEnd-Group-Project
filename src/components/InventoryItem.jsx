@@ -3,14 +3,14 @@ import {playerUseItem} from "../Api";
 
 
 
-export const InventoryItem = ({item, itemIcon, text, messages,
+export const InventoryItem = ({item, itemIcon, text, messages, playerId,
   setMessages,
   setPlayerItems,
   setRoomsYouCanEnter}) => {
   
   const handleUseItem = async () => {
     try{
-      const nextMoveResponse = await playerUseItem(1, item.toLowerCase());
+      const nextMoveResponse = await playerUseItem(playerId, item.toLowerCase());
       setMessages([...messages,
         { type: 'send', text: `I just used ${item}` },
         { type: 'receive', text: nextMoveResponse.reply }

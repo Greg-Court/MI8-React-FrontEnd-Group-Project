@@ -98,6 +98,7 @@ function App() {
             setRoomsYouCanEnter={setRoomsYouCanEnter}
             playerItems={playerItems}
             messages={messages}
+            playerId={playerId}
           />
           <ChatContainer messages={messages} />
         </div>
