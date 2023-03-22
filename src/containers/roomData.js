@@ -1,11 +1,11 @@
 import lobby from "../assets/rooms/lobby.png";
 import plaza from "../assets/rooms/plaza.png";
-import elevator from "../assets/rooms/elevator.gif";
 import basement from "../assets/rooms/basement.png";
 import vault from "../assets/rooms/vault.png";
 import extraction from "../assets/rooms/extraction.png";
 import security from "../assets/rooms/security.png";
 import ceosoffice from "../assets/rooms/security.png";
+import elevatorstatic from "../assets/rooms/elevatorstatic.png";
 
 // import airvent from "../assets/rooms/airvent.png";
 
@@ -101,7 +101,7 @@ const roomData = {
    ],
  },
  elevator: {
-   image: elevator,
+   image: elevatorstatic,
    clickableAreas: [
      {
        x1: 257,
