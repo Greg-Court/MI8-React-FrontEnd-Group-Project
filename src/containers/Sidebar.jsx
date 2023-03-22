@@ -3,17 +3,21 @@ import { AiOutlineCloud } from 'react-icons/ai';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { MdLeaderboard } from 'react-icons/md';
 
-const Sidebar = ({resetGame}) => {
+const Sidebar = ({resetGame, startNewGame}) => {
 
   const handleResetClick = () => {
     resetGame();
   };
 
+  const handleStartNewGameClick = () => {
+    startNewGame();
+  }
+
   return (
     <div
       className="fixed top-1/2 w-16 h-1/2 m-0 flex flex-col bg-transparent text-white justify-center flex-gro"
     >
-        <SidebarIcon icon={<BsPlus size="32" />} text="Start New Game"/>
+        <SidebarIcon icon={<BsPlus size="32" />} text="Start New Game" onClick={handleStartNewGameClick}/>
         <SidebarIcon icon={<AiOutlineCloud size="28" />} text="Load Existing Game"/>
         <SidebarIcon icon={<MdLeaderboard size="20" />} text="Leaderboard" />
         <SidebarIcon icon={<VscDebugRestart size="20" />} text="Restart Game" onClick={handleResetClick}/>

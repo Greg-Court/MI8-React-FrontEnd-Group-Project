@@ -15,6 +15,7 @@ function App() {
   const [roomsYouCanEnter, setRoomsYouCanEnter] = useState([]);
   const [playerId, setPlayerId] = useState(null);
   const [gameId, setGameId] = useState(null);
+  const [currentRoom, setCurrentRoom] = useState("plaza");
 
   // const [isAppInitialised, setIsAppInitialised] = useState(false);
 
@@ -27,7 +28,8 @@ function App() {
       setPlayerItems,
       setRoomsYouCanEnter,
       setPlayerId,
-      setGameId
+      setGameId,
+      setCurrentRoom
     );
   }, []);
 
@@ -64,12 +66,32 @@ function App() {
         setPlayerItems,
         setRoomsYouCanEnter,
         setPlayerId,
-        setGameId
+        setGameId,
+        setCurrentRoom
       );
     } catch (error) {
       console.log(error);
     }
   };
+
+  const startNewGame = async () => {
+    try {setMessages([]);
+      setPlayerItems([]);
+      setRoomsYouCanEnter([]);
+      initialiseApp(
+        "James Bondage",
+        setMessages,
+        setPlayerItems,
+        setRoomsYouCanEnter,
+        setPlayerId,
+        setGameId,
+        setCurrentRoom
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
 
   return (
     <div className="h-screen">
@@ -80,9 +102,11 @@ function App() {
         messages={messages}
         setPlayerItems={setPlayerItems}
         gameId={gameId}
+        currentRoom={currentRoom}
+        setCurrentRoom={currentRoom}
       />
       <div className="flex h-1/2">
-        <Sidebar resetGame={resetGame} />
+        <Sidebar resetGame={resetGame} startNewGame={startNewGame} />
         <div className="flex flex-1">
           <InventoryContainer
             setMessages={setMessages}

@@ -90,8 +90,8 @@ const ImageMap = ({
 };
 
 // Main ImageContainer component
-export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId, setRoomsYouCanEnter }) => {
-  const [currentRoom, setCurrentRoom] = useState("plaza");
+export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId, setRoomsYouCanEnter, currentRoom, setCurrentRoom }) => {
+  
   const [showText, setShowText] = useState(false);
   const [text, setText] = useState("");
 
