@@ -50,13 +50,17 @@ const ImageMap = ({
             onClick={() => handleAreaClick(area, messages)}
             onMouseOver={() => {
               // shows go to next room text
-              setShowText(true);
-              setText(area.text);
+              if (roomsYouCanEnter.includes(area.nextRoom)) {
+                setShowText(true);
+                setText(area.text);
+              }
             }}
             onMouseOut={() => {
               // hides go to next room text
-              setShowText(false);
-              setText("");
+              if (roomsYouCanEnter.includes(area.nextRoom)) {
+                setShowText(false);
+                setText("");
+              }
             }}
           />
         ))}
@@ -106,9 +110,7 @@ export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages }) => {
         messages={messages}
       />
       {showText && (
-        <div
-          className="bg-glow fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-y-[-100px] text-5xl animate-pulse bg-black bg-opacity-10 font-bold text-white rounded-full px-6 py-4"
-        >
+        <div className="bg-glow fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-y-[-100px] text-5xl animate-pulse bg-black bg-opacity-10 font-bold text-white rounded-full px-6 py-4">
           {text}
         </div>
       )}
