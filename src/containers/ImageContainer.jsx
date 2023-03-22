@@ -20,7 +20,7 @@ const ImageMap = ({
   // logic to move to the next room if the area clicked is legitness
   const handleAreaClick = async (area, messages) => {
     // Check if the user is allowed to enter the room they clicked on
-    if (roomsYouCanEnter.includes(area.nextRoom)) {
+    if (roomsYouCanEnter && roomsYouCanEnter.includes(area.nextRoom)) {
       const nextRoom = area.nextRoom;
       // Call the enterRoom API function to get a response
       const response = await enterRoom(gameId, nextRoom);
@@ -56,14 +56,14 @@ const ImageMap = ({
             onClick={() => handleAreaClick(area, messages)}
             onMouseOver={() => {
               // shows go to next room text
-              if (roomsYouCanEnter.includes(area.nextRoom)) {
+              if (roomsYouCanEnter && roomsYouCanEnter.includes(area.nextRoom)) {
                 setShowText(true);
                 setText(area.text);
               }
             }}
             onMouseOut={() => {
               // hides go to next room text
-              if (roomsYouCanEnter.includes(area.nextRoom)) {
+              if (roomsYouCanEnter && roomsYouCanEnter.includes(area.nextRoom)) {
                 setShowText(false);
                 setText("");
               }
@@ -90,7 +90,7 @@ const ImageMap = ({
 };
 
 // Main ImageContainer component
-export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId, setRoomsYouCanEnter, currentRoom, setCurrentRoom }) => {
+export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId, setRoomsYouCanEnter, currentRoom, setCurrentRoom, setPlayerItems }) => {
   
   const [showText, setShowText] = useState(false);
   const [text, setText] = useState("");
@@ -116,6 +116,7 @@ export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId
         setMessages={setMessages}
         messages={messages}
         gameId={gameId}
+        setPlayerItems={setPlayerItems}
       />
       {showText && (
         <div className="bg-glow fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-y-[-100px] text-5xl animate-pulse bg-black bg-opacity-10 font-bold text-white rounded-full px-6 py-4">

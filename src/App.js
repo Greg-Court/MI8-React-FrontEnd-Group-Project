@@ -103,7 +103,7 @@ function App() {
         setPlayerItems={setPlayerItems}
         gameId={gameId}
         currentRoom={currentRoom}
-        setCurrentRoom={currentRoom}
+        setCurrentRoom={setCurrentRoom}
       />
       <div className="flex h-1/2">
         <Sidebar resetGame={resetGame} startNewGame={startNewGame} />

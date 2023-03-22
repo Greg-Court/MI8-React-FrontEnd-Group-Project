@@ -4,10 +4,9 @@ import basement from "../assets/rooms/basement.png";
 import vault from "../assets/rooms/vault.png";
 import extraction from "../assets/rooms/extraction.png";
 import security from "../assets/rooms/security.png";
-import ceosoffice from "../assets/rooms/security.png";
+import ceosoffice from "../assets/rooms/ceosoffice.png";
 import elevatorstatic from "../assets/rooms/elevatorstatic.png";
-
-// import airvent from "../assets/rooms/airvent.png";
+import airvents from "../assets/rooms/airvents.png";
 
 
 const roomData = {
@@ -74,28 +73,28 @@ const roomData = {
      },
    ],
  },
- // airvents: {
- //   image: airvents,
- //   clickableAreas: [
- //     {
- //       x1: 257,
- //       y1: 4,
- //       x2: 408,
- //       y2: 221,
- //       nextRoom: "vault",
- //       text: "Go to the vault",
- //     },
- //   ],
- // },
- vault: {
-   image: vault,
+ airvents: {
+   image: airvents,
    clickableAreas: [
      {
        x1: 257,
        y1: 4,
        x2: 408,
        y2: 221,
-       nextRoom: "endroom",
+       nextRoom: "vault",
+       text: "Go to the vault",
+     },
+   ],
+ },
+ vault: {
+   image: vault,
+   clickableAreas: [
+     {
+       x1: 100,
+       y1: 50,
+       x2: 500,
+       y2: 150,
+       nextRoom: "extraction",
        text: "Go to the endroom",
      },
    ],
@@ -112,10 +111,10 @@ const roomData = {
        text: "Go to the lobby",
      },
      {
-       x1: 123,
-       y1: 123,
-       x2: 123,
-       y2: 123,
+      x1: 800,
+      y1: 80,
+      x2: 900,
+      y2: 320,
        nextRoom: "basement",
        text: "Go to the basement",
      },
@@ -128,10 +127,10 @@ const roomData = {
        text: "Go to security",
      },
      {
-       x1: 123,
-       y1: 123,
-       x2: 123,
-       y2: 123,
+      x1: 500,
+      y1: 80,
+      x2: 600,
+      y2: 320,
        nextRoom: "ceosoffice",
        text: "Go to the CEOs office",
      },
@@ -162,11 +161,11 @@ const roomData = {
        text: "Go to the elevator",
      },
      {
-       x1: 123,
-       y1: 123,
-       x2: 123,
-       y2: 123,
-       nextRoom: "endroom",
+      x1: 800,
+      y1: 80,
+      x2: 900,
+      y2: 320,
+       nextRoom: "extraction",
        text: "Go to the endroom",
      },
    ],
@@ -183,10 +182,10 @@ const roomData = {
        text: "Go to the vault",
      },
      {
-       x1: 123,
-       y1: 123,
-       x2: 123,
-       y2: 123,
+      x1: 800,
+      y1: 80,
+      x2: 900,
+      y2: 320,
        nextRoom: "ceosoffice",
        text: "Go to the ceosoffice",
      },
