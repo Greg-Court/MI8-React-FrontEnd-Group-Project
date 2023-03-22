@@ -8,7 +8,8 @@ export const initialiseApp = async (
   setPlayerItems,
   setRoomsYouCanEnter,
   setGameId,
-  setPlayerId
+  setPlayerId,
+  setCurrentRoom
 ) => {
   try {
     const newPlayer = await createNewPlayer(playerName);
@@ -22,8 +23,8 @@ export const initialiseApp = async (
     setPlayerItems(gameReply.inventory);
     setRoomsYouCanEnter(gameReply.roomsYouCanEnter);
     setPlayerId(newPlayer.id)
-    // setGameId is working but completely fake. gameReply doesn't return the game ID.....
     setGameId(gameReply.gameId)
+    setCurrentRoom("plaza")
   } catch (error) {
     console.log(error);
   }
