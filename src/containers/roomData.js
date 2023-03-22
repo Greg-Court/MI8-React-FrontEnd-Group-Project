@@ -1,6 +1,6 @@
 import lobby from "../assets/rooms/lobby.png";
 import plaza from "../assets/rooms/plaza.png";
-import elevator from "../assets/rooms/elevator.png";
+import elevator from "../assets/rooms/elevator.gif";
 import basement from "../assets/rooms/basement.png";
 import vault from "../assets/rooms/vault.png";
 import extraction from "../assets/rooms/extraction.png";
@@ -44,10 +44,10 @@ const roomData = {
        text: "Go to the elevator",
      },
      {
-       x1: 257,
+       x1: 0,
        y1: 4,
-       x2: 408,
-       y2: 221,
+       x2: 300,
+       y2: 500,
        nextRoom: "plaza",
        text: "Go back to the plaza",
      },
@@ -120,10 +120,10 @@ const roomData = {
        text: "Go to the basement",
      },
      {
-       x1: 123,
-       y1: 123,
-       x2: 123,
-       y2: 123,
+       x1: 400,
+       y1: 0,
+       x2: 600,
+       y2: 100,
        nextRoom: "security",
        text: "Go to security",
      },
@@ -171,27 +171,27 @@ const roomData = {
      },
    ],
  },
- // extraction: {
- //   image: endroom,
- //   clickableAreas: [
- //     {
- //       x1: 257,
- //       y1: 4,
- //       x2: 408,
- //       y2: 221,
- //       nextRoom: "vault",
- //       text: "Go to the vault",
- //     },
- //     {
- //       x1: 123,
- //       y1: 123,
- //       x2: 123,
- //       y2: 123,
- //       nextRoom: "ceosoffice",
- //       text: "Go to the ceosoffice",
- //     },
- //   ],
- // },
+ extraction: {
+   image: extraction,
+   clickableAreas: [
+     {
+       x1: 257,
+       y1: 4,
+       x2: 408,
+       y2: 221,
+       nextRoom: "vault",
+       text: "Go to the vault",
+     },
+     {
+       x1: 123,
+       y1: 123,
+       x2: 123,
+       y2: 123,
+       nextRoom: "ceosoffice",
+       text: "Go to the ceosoffice",
+     },
+   ],
+ },
 };
 
 export default roomData;

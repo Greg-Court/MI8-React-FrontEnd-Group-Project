@@ -96,7 +96,7 @@ export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId
   const [text, setText] = useState("");
 
   return (
-    <div className="imageContainer h-1/2 flex justify-center">
+    <div className="imageContainer h-1/2 flex justify-center bg-black">
       <img
         src={roomData[currentRoom].image}
         alt={currentRoom}
