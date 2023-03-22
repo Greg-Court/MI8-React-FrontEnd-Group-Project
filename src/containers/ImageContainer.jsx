@@ -26,6 +26,7 @@ const ImageMap = ({
       const response = await enterRoom(gameId, nextRoom);
       // If there's a response, update the current room and messages
       if (response) {
+        setRoomsYouCanEnter(response.roomsYouCanEnter)
         setShowText(false);
         setText("");
         setCurrentRoom(nextRoom);
@@ -35,7 +36,6 @@ const ImageMap = ({
           { type: "receive", text: response.reply },
         ]);
         setPlayerItems(response.inventory);
-        setRoomsYouCanEnter(response.roomsYouCanEnter);
       }
     }
   };
@@ -90,7 +90,7 @@ const ImageMap = ({
 };
 
 // Main ImageContainer component
-export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId }) => {
+export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId, setRoomsYouCanEnter }) => {
   const [currentRoom, setCurrentRoom] = useState("plaza");
   const [showText, setShowText] = useState(false);
   const [text, setText] = useState("");
@@ -109,6 +109,7 @@ export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId
       <ImageMap
         currentRoom={currentRoom}
         roomsYouCanEnter={roomsYouCanEnter}
+        setRoomsYouCanEnter={setRoomsYouCanEnter}
         setCurrentRoom={setCurrentRoom}
         setShowText={setShowText}
         setText={setText}
