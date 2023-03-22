@@ -4,7 +4,7 @@ import { ImageContainer } from "./containers/ImageContainer";
 import { InventoryContainer } from "./containers/InventoryContainer";
 import { initialiseApp } from "./AppInitialiser";
 import Sidebar from "./containers/Sidebar";
-import { deleteGame, deletePlayer } from "./Api";
+import { deleteGame, deletePlayer, getGameStatus } from "./Api";
 
 function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
@@ -16,6 +16,10 @@ function App() {
   const [playerId, setPlayerId] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [currentRoom, setCurrentRoom] = useState("plaza");
+
+  useEffect(() => {
+    console.log(getGameStatus(playerId));
+  }, [currentRoom])
 
   // const [isAppInitialised, setIsAppInitialised] = useState(false);
 

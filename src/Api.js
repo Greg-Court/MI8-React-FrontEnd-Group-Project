@@ -147,3 +147,15 @@ export const enterRoom = async (gameId, room) => {
       console.log(error);
     }
   };
+
+  export const getGameStatus = async (gameId) => {
+    try {
+      const response = await fetch(`${BASE_URL}/game/${gameId}`, {
+        method: 'GET',
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
