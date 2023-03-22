@@ -6,6 +6,7 @@ import { enterRoom } from "../Api";
 const ImageMap = ({
   currentRoom, // key of current room from roomData object
   roomsYouCanEnter, // array of room keys that user is allowed to enter
+  setRoomsYouCanEnter,
   setCurrentRoom, // to change the state of the current room
   setShowText, // to control visibility of the text overlay
   setText, // to set what is in the overlay
@@ -34,6 +35,7 @@ const ImageMap = ({
           { type: "receive", text: response.reply },
         ]);
         setPlayerItems(response.inventory);
+        setRoomsYouCanEnter(response.roomsYouCanEnter);
       }
     }
   };

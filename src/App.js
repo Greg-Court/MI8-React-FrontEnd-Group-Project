@@ -75,6 +75,7 @@ function App() {
     <div className="h-screen">
       <ImageContainer
         roomsYouCanEnter={roomsYouCanEnter}
+        setRoomsYouCanEnter={setRoomsYouCanEnter}
         setMessages={setMessages}
         messages={messages}
         setPlayerItems={setPlayerItems}
