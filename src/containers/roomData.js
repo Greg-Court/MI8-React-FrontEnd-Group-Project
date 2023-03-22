@@ -5,7 +5,7 @@ import vault from "../assets/rooms/vault.png";
 import extraction from "../assets/rooms/extraction.png";
 import security from "../assets/rooms/security.png";
 import ceosoffice from "../assets/rooms/ceosoffice.png";
-import elevatorstatic from "../assets/rooms/elevatorstatic.png";
+import elevatorstatic from "../assets/rooms/elevator.jpg";
 import airvents from "../assets/rooms/airvents.png";
 
 
