@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { InventoryItem } from "../components/InventoryItem";
 import torch from "../assets/items/torch.png";
 import eyes from "../assets/items/eyes.png";
@@ -6,7 +6,6 @@ import multitool from "../assets/items/multitool.png";
 import laptop from "../assets/items/laptop.png";
 import keycard from "../assets/items/keycard.png";
 import tracker from "../assets/items/tracker.png";
-import { useItem } from "../Api";
 import weaponsbg from "../assets/other/weaponsbg.jpeg";
 
 export const InventoryContainer = ({
@@ -15,7 +14,7 @@ export const InventoryContainer = ({
   playerId,
   setMessages,
   setRoomsYouCanEnter,
-  messages,
+  messages
 }) => {
   const items = [
     {
@@ -50,11 +49,16 @@ export const InventoryContainer = ({
     },
   ];
 
-  const itemsToDisplay = items
-    .filter(
+  const [itemsToDisplay, setItemsToDisplay] = useState([]);
+
+  useEffect(() => {
+    const filteredItems = items.filter(
       (item) => playerItems && playerItems.includes(item.title.toLowerCase())
-    )
-    .map((item) => (
+    );
+    console.log(playerItems);
+    console.log(filteredItems);
+    console.log("USEEFFECT TRIGGERED!")
+    const itemsToDisplay = filteredItems.map((item) => (
       <li key={item.id}>
         <InventoryItem
           item={item.title}
@@ -68,6 +72,8 @@ export const InventoryContainer = ({
         />
       </li>
     ));
+    setItemsToDisplay(itemsToDisplay);
+  }, [playerItems, playerId, messages]);
 
   return (
     <div

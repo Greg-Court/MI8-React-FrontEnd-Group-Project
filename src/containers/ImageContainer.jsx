@@ -11,6 +11,8 @@ const ImageMap = ({
   setText, // to set what is in the overlay
   setMessages, // to set messages
   messages,
+  setPlayerItems,
+  gameId
 }) => {
   const room = roomData[currentRoom];
 
@@ -18,18 +20,20 @@ const ImageMap = ({
   const handleAreaClick = async (area, messages) => {
     // Check if the user is allowed to enter the room they clicked on
     if (roomsYouCanEnter.includes(area.nextRoom)) {
-      const gameId = 1;
       const nextRoom = area.nextRoom;
       // Call the enterRoom API function to get a response
       const response = await enterRoom(gameId, nextRoom);
       // If there's a response, update the current room and messages
       if (response) {
+        setShowText(false);
+        setText("");
         setCurrentRoom(nextRoom);
         setMessages([
           ...messages,
           { type: "send", text: `I just entered ${nextRoom}` },
           { type: "receive", text: response.reply },
         ]);
+        setPlayerItems(response.inventory);
       }
     }
   };
@@ -84,7 +88,7 @@ const ImageMap = ({
 };
 
 // Main ImageContainer component
-export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages }) => {
+export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages, gameId }) => {
   const [currentRoom, setCurrentRoom] = useState("plaza");
   const [showText, setShowText] = useState(false);
   const [text, setText] = useState("");
@@ -108,6 +112,7 @@ export const ImageContainer = ({ roomsYouCanEnter, setMessages, messages }) => {
         setText={setText}
         setMessages={setMessages}
         messages={messages}
+        gameId={gameId}
       />
       {showText && (
         <div className="bg-glow fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 translate-y-[-100px] text-5xl animate-pulse bg-black bg-opacity-10 font-bold text-white rounded-full px-6 py-4">

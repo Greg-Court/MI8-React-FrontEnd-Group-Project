@@ -78,6 +78,7 @@ function App() {
         setMessages={setMessages}
         messages={messages}
         setPlayerItems={setPlayerItems}
+        gameId={gameId}
       />
       <div className="flex h-1/2">
         <Sidebar resetGame={resetGame} />
