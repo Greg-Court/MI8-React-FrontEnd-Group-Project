@@ -6,7 +6,7 @@ import extraction from "../assets/rooms/extraction.png";
 import security from "../assets/rooms/security.png";
 import ceosoffice from "../assets/rooms/ceosoffice.png";
 import elevatorstatic from "../assets/rooms/elevator.jpg";
-import airvents from "../assets/rooms/airvents.png";
+import airvents from "../assets/rooms/airvents.jpg";
 
 
 const roomData = {
