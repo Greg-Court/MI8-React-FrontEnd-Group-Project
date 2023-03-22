@@ -3,6 +3,10 @@ import plaza from "../assets/rooms/plaza.png";
 import elevator from "../assets/rooms/elevator.png";
 import basement from "../assets/rooms/basement.png";
 import vault from "../assets/rooms/vault.png";
+import extraction from "../assets/rooms/extraction.png";
+import security from "../assets/rooms/security.png";
+import ceosoffice from "../assets/rooms/security.png";
+
 // import airvent from "../assets/rooms/airvent.png";
 
 
@@ -83,19 +87,19 @@ const roomData = {
  //     },
  //   ],
  // },
- // vault: {
- //   image: vault,
- //   clickableAreas: [
- //     {
- //       x1: 257,
- //       y1: 4,
- //       x2: 408,
- //       y2: 221,
- //       nextRoom: "endroom",
- //       text: "Go to the endroom",
- //     },
- //   ],
- // },
+ vault: {
+   image: vault,
+   clickableAreas: [
+     {
+       x1: 257,
+       y1: 4,
+       x2: 408,
+       y2: 221,
+       nextRoom: "endroom",
+       text: "Go to the endroom",
+     },
+   ],
+ },
  elevator: {
    image: elevator,
    clickableAreas: [
@@ -133,41 +137,41 @@ const roomData = {
      },
    ],
  },
- // security: {
- //   image: security,
- //   clickableAreas: [
- //     {
- //       x1: 10,
- //       y1: 10,
- //       x2: 500,
- //       y2: 500,
- //       nextRoom: "elevator",
- //       text: "Go to the elevator",
- //     },
- //   ],
- // },
- // ceosoffice: {
- //   image: ceosoffice,
- //   clickableAreas: [
- //     {
- //       x1: 257,
- //       y1: 4,
- //       x2: 408,
- //       y2: 221,
- //       nextRoom: "elevator",
- //       text: "Go to the elevator",
- //     },
- //     {
- //       x1: 123,
- //       y1: 123,
- //       x2: 123,
- //       y2: 123,
- //       nextRoom: "endroom",
- //       text: "Go to the endroom",
- //     },
- //   ],
- // },
- // endroom: {
+ security: {
+   image: security,
+   clickableAreas: [
+     {
+       x1: 10,
+       y1: 10,
+       x2: 500,
+       y2: 500,
+       nextRoom: "elevator",
+       text: "Go to the elevator",
+     },
+   ],
+ },
+ ceosoffice: {
+   image: ceosoffice,
+   clickableAreas: [
+     {
+       x1: 257,
+       y1: 4,
+       x2: 408,
+       y2: 221,
+       nextRoom: "elevator",
+       text: "Go to the elevator",
+     },
+     {
+       x1: 123,
+       y1: 123,
+       x2: 123,
+       y2: 123,
+       nextRoom: "endroom",
+       text: "Go to the endroom",
+     },
+   ],
+ },
+ // extraction: {
  //   image: endroom,
  //   clickableAreas: [
  //     {
