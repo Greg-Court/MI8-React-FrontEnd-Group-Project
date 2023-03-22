@@ -16,7 +16,7 @@ const Sidebar = ({resetGame}) => {
         <SidebarIcon icon={<BsPlus size="32" />} text="Start New Game"/>
         <SidebarIcon icon={<AiOutlineCloud size="28" />} text="Load Existing Game"/>
         <SidebarIcon icon={<MdLeaderboard size="20" />} text="Leaderboard" />
-        <SidebarIcon icon={<VscDebugRestart size="20" />} text="Reset Game" onClick={handleResetClick}/>
+        <SidebarIcon icon={<VscDebugRestart size="20" />} text="Restart Game" onClick={handleResetClick}/>
         <SidebarIcon icon={<BsGearFill size="22" />} text="Settings" />
     </div>
   );

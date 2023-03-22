@@ -10,18 +10,9 @@ function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
   // If the data is found, it's parsed from a JSON string back into its original data structure (array) and used as the initial state.
   // If no data is found, an empty array is used as the initial state.
-  const [messages, setMessages] = useState(() => {
-    const storedMessages = sessionStorage.getItem("messages");
-    return storedMessages ? JSON.parse(storedMessages) : [];
-  });
-  const [playerItems, setPlayerItems] = useState(() => {
-    const storedPlayerItems = sessionStorage.getItem("playerItems");
-    return storedPlayerItems ? JSON.parse(storedPlayerItems) : [];
-  });
-  const [roomsYouCanEnter, setRoomsYouCanEnter] = useState(() => {
-    const storedRooms = sessionStorage.getItem("roomsYouCanEnter");
-    return storedRooms ? JSON.parse(storedRooms) : [];
-  });
+  const [messages, setMessages] = useState([]);
+  const [playerItems, setPlayerItems] = useState([]);
+  const [roomsYouCanEnter, setRoomsYouCanEnter] = useState([]);
   const [playerId, setPlayerId] = useState(null);
   const [gameId, setGameId] = useState(null);
 
@@ -64,7 +55,6 @@ function App() {
         await deleteGame(gameId);
         await deletePlayer(playerId);
       }
-      sessionStorage.clear();
       setMessages([]);
       setPlayerItems([]);
       setRoomsYouCanEnter([]);
