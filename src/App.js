@@ -8,6 +8,7 @@ import { deleteGame, deletePlayer, getGameById } from "./Api";
 import Confetti from "./Confetti";
 import AudioPlayer from "./components/AudioPlayer";
 import NamePopup from "./components/NamePopup";
+import WinnerPopup from "./components/WinnerPopup";
 
 function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
@@ -22,7 +23,8 @@ function App() {
   const [playerName, setPlayerName] = useState('');
   const [isNamePopupVisible, setIsNamePopupVisible] = useState(true);
   const [uiProps, setUiProps] = useState({
-    showConfetti: false
+    showConfetti: false,
+    showPopup: false
   });
 
 
@@ -33,7 +35,8 @@ function App() {
       const gameStatus = await getGameById(playerId);
       console.log(gameStatus);
       (gameStatus.playerHasWon === true) && setUiProps({
-        showConfetti: true
+        showConfetti: true,
+        showPopup: true
       })
     }
     checkIfPopup();
@@ -117,6 +120,7 @@ function App() {
     <>
       {isNamePopupVisible && <NamePopup onNameSubmit={handleNameSubmit} setPlayerName={setPlayerName} playerName={playerName}/>}
       {uiProps.showConfetti && <Confetti />}
+      {uiProps.showPopup && <WinnerPopup playerName={playerName}/>}
       <div className="h-screen">
         <ImageContainer
           roomsYouCanEnter={roomsYouCanEnter}
