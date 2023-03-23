@@ -5,6 +5,8 @@ import { InventoryContainer } from "./containers/InventoryContainer";
 import { initialiseApp } from "./AppInitialiser";
 import Sidebar from "./containers/Sidebar";
 import { deleteGame, deletePlayer, getGameById } from "./Api";
+import Confetti from "./Confetti";
+
 
 function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
@@ -16,12 +18,21 @@ function App() {
   const [playerId, setPlayerId] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [currentRoom, setCurrentRoom] = useState("plaza");
+  // const [startConfetti, setStartConfetti] = useState(false)
+  const [uiProps, setUiProps] = useState({
+    showConfetti: false
+  });
+
+
+  
 
   useEffect( () => {
     const checkIfPopup = async () => {
       const gameStatus = await getGameById(playerId);
       console.log(gameStatus);
-      (gameStatus.playerHasWon === true) && console.log("YOU WON!");
+      (gameStatus.playerHasWon === true) && setUiProps({
+        showConfetti: true
+      })
     }
     checkIfPopup();
   }, [currentRoom])
@@ -108,32 +119,35 @@ function App() {
 
 
   return (
-    <div className="h-screen">
-      <ImageContainer
-        roomsYouCanEnter={roomsYouCanEnter}
-        setRoomsYouCanEnter={setRoomsYouCanEnter}
-        setMessages={setMessages}
-        messages={messages}
-        setPlayerItems={setPlayerItems}
-        gameId={gameId}
-        currentRoom={currentRoom}
-        setCurrentRoom={setCurrentRoom}
-      />
-      <div className="flex h-1/2">
-        <Sidebar resetGame={resetGame} startNewGame={startNewGame} />
-        <div className="flex flex-1">
-          <InventoryContainer
-            setMessages={setMessages}
-            setPlayerItems={setPlayerItems}
-            setRoomsYouCanEnter={setRoomsYouCanEnter}
-            playerItems={playerItems}
-            messages={messages}
-            playerId={playerId}
-          />
-          <ChatContainer messages={messages} />
+    <>
+      {uiProps.showConfetti && <Confetti />}
+      <div className="h-screen">
+        <ImageContainer
+          roomsYouCanEnter={roomsYouCanEnter}
+          setRoomsYouCanEnter={setRoomsYouCanEnter}
+          setMessages={setMessages}
+          messages={messages}
+          setPlayerItems={setPlayerItems}
+          gameId={gameId}
+          currentRoom={currentRoom}
+          setCurrentRoom={setCurrentRoom}
+        />
+        <div className="flex h-1/2">
+          <Sidebar resetGame={resetGame} startNewGame={startNewGame} />
+          <div className="flex flex-1">
+            <InventoryContainer
+              setMessages={setMessages}
+              setPlayerItems={setPlayerItems}
+              setRoomsYouCanEnter={setRoomsYouCanEnter}
+              playerItems={playerItems}
+              messages={messages}
+              playerId={playerId}
+            />
+            <ChatContainer messages={messages} />
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }
 
