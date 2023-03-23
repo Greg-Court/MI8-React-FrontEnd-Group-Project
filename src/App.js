@@ -27,20 +27,19 @@ function App() {
     showPopup: false
   });
 
-
-  
-
   useEffect( () => {
     const checkIfPopup = async () => {
       const gameStatus = await getGameById(playerId);
       console.log(gameStatus);
-      (gameStatus.playerHasWon === true) && setUiProps({
-        showConfetti: true,
-        showPopup: true
-      })
+      if (gameStatus.playerHasWon === true) {
+        setUiProps((prevState) => ({...prevState, showConfetti: true}))
+        setTimeout(() => {
+          setUiProps((prevState) => ({...prevState, showPopup: true}))
+        }, 10000);
+      }
     }
     checkIfPopup();
-  }, [currentRoom])
+  }, [currentRoom]);
 
 
   const handleNameSubmit = (playerName) => {
