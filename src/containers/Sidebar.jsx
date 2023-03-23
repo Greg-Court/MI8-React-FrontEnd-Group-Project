@@ -2,8 +2,17 @@ import { BsPlus, BsGearFill } from 'react-icons/bs';
 import { AiOutlineCloud } from 'react-icons/ai';
 import { VscDebugRestart } from 'react-icons/vsc';
 import { MdLeaderboard } from 'react-icons/md';
+import { GoMute, GoUnmute} from 'react-icons/go';
+import AudioPlayer from '../components/AudioPlayer';
+import { useState } from 'react';
 
 const Sidebar = ({resetGame, startNewGame}) => {
+  const [isMusicPlaying,setIsMusicPlaying] = useState(true);
+
+  const toggleMusic = () => {
+    setIsMusicPlaying(prevState => !prevState);
+  }
+  
 
   const handleResetClick = () => {
     resetGame();
@@ -22,7 +31,12 @@ const Sidebar = ({resetGame, startNewGame}) => {
         <SidebarIcon icon={<MdLeaderboard size="20" />} text="Leaderboard" />
         <SidebarIcon icon={<VscDebugRestart size="20" />} text="Restart Game" onClick={handleResetClick}/>
         <SidebarIcon icon={<BsGearFill size="22" />} text="Settings" />
+        <SidebarIcon icon={<GoMute size="22" />} text="Stop Music" onClick={toggleMusic}/> 
+        <SidebarIcon icon={<GoUnmute size="22" />} text="Play Music" onClick={toggleMusic}/> 
+        <AudioPlayer isMusicPlaying={isMusicPlaying}/>
     </div>
+    
+    
   );
 };
  

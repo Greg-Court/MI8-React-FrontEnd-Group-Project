@@ -5,6 +5,7 @@ import { InventoryContainer } from "./containers/InventoryContainer";
 import { initialiseApp } from "./AppInitialiser";
 import Sidebar from "./containers/Sidebar";
 import { deleteGame, deletePlayer, getGameById } from "./Api";
+import AudioPlayer from "./components/AudioPlayer";
 
 function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
@@ -119,6 +120,7 @@ function App() {
         currentRoom={currentRoom}
         setCurrentRoom={setCurrentRoom}
       />
+      <AudioPlayer />
       <div className="flex h-1/2">
         <Sidebar resetGame={resetGame} startNewGame={startNewGame} />
         <div className="flex flex-1">
