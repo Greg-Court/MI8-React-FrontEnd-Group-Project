@@ -54,6 +54,7 @@ function App() {
     );
   };
 
+
   // UseEffect hooks listen for changes in their respective state variables (messages, playerItems, and roomsYouCanEnter).
   // When the state changes, the hook updates the sessionStorage with the latest state data.
   // The data is converted to a JSON string using JSON.stringify before being saved to the sessionStorage.
