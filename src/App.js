@@ -20,27 +20,26 @@ function App() {
   const [playerId, setPlayerId] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [currentRoom, setCurrentRoom] = useState("plaza");
-  const [playerName, setPlayerName] = useState('');
+  const [playerName, setPlayerName] = useState("");
   const [isNamePopupVisible, setIsNamePopupVisible] = useState(true);
   const [uiProps, setUiProps] = useState({
     showConfetti: false,
-    showPopup: false
+    showPopup: false,
   });
 
-  useEffect( () => {
+  useEffect(() => {
     const checkIfPopup = async () => {
       const gameStatus = await getGameById(playerId);
       console.log(gameStatus);
       if (gameStatus.playerHasWon === true) {
-        setUiProps((prevState) => ({...prevState, showConfetti: true}))
+        setUiProps((prevState) => ({ ...prevState, showConfetti: true }));
         setTimeout(() => {
-          setUiProps((prevState) => ({...prevState, showPopup: true}))
+          setUiProps((prevState) => ({ ...prevState, showPopup: true }));
         }, 10000);
       }
-    }
+    };
     checkIfPopup();
   }, [currentRoom]);
-
 
   const handleNameSubmit = (playerName) => {
     setIsNamePopupVisible(false);
@@ -83,7 +82,7 @@ function App() {
       setPlayerItems([]);
       setRoomsYouCanEnter([]);
       initialiseApp(
-        "James Bondage",
+        playerName,
         setMessages,
         setPlayerItems,
         setRoomsYouCanEnter,
@@ -91,17 +90,21 @@ function App() {
         setGameId,
         setCurrentRoom
       );
+      setUiProps({ showConfetti: false, showPopup: false });
     } catch (error) {
       console.log(error);
     }
   };
 
-  const startNewGame = async () => {
-    try {setMessages([]);
+  const startNewGame = async (playerName) => {
+    try {
+      setMessages([]);
       setPlayerItems([]);
       setRoomsYouCanEnter([]);
+      setPlayerName("");
+      setIsNamePopupVisible(true);
       initialiseApp(
-        "James Bondage",
+        playerName,
         setMessages,
         setPlayerItems,
         setRoomsYouCanEnter,
@@ -109,17 +112,23 @@ function App() {
         setGameId,
         setCurrentRoom
       );
+      setUiProps({ showConfetti: false, showPopup: false });
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
 
   return (
     <>
-      {isNamePopupVisible && <NamePopup onNameSubmit={handleNameSubmit} setPlayerName={setPlayerName} playerName={playerName}/>}
+      {isNamePopupVisible && (
+        <NamePopup
+          onNameSubmit={handleNameSubmit}
+          setPlayerName={setPlayerName}
+          playerName={playerName}
+        />
+      )}
       {uiProps.showConfetti && <Confetti />}
-      {uiProps.showPopup && <WinnerPopup playerName={playerName}/>}
+      {uiProps.showPopup && <WinnerPopup playerName={playerName} />}
       <div className="h-screen">
         <ImageContainer
           roomsYouCanEnter={roomsYouCanEnter}
@@ -131,7 +140,7 @@ function App() {
           currentRoom={currentRoom}
           setCurrentRoom={setCurrentRoom}
         />
-         <AudioPlayer />
+        <AudioPlayer />
         <div className="flex h-1/2">
           <Sidebar resetGame={resetGame} startNewGame={startNewGame} />
           <div className="flex flex-1">
