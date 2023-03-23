@@ -58,3 +58,33 @@
 .grow-from-bottom-right {
   animation: growFromBottomRight 0.5s ease-out forwards;
 }
+
+.fade-in {
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: 5s;
+  animation-fill-mode: forwards; /* keep the final style of the animation after it ends */
+}
+
+@keyframes fadeIn {
+  from {opacity: 0;}
+  to {opacity: 1;}
+}
+
+@keyframes custom-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.name-popup-button {
+  animation: custom-pulse 1s ease-in-out infinite;
+}
+
+.btn-clicked {
+  transform: scale(0.9) translateY(4px);
+}

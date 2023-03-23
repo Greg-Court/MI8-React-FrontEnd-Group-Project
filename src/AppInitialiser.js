@@ -1,6 +1,5 @@
 import { createNewPlayer, createNewGame } from "./Api";
 
-
 export const initialiseApp = async (
   playerName,
   setMessages,
@@ -10,7 +9,7 @@ export const initialiseApp = async (
   setPlayerId,
   setCurrentRoom
 ) => {
-  const newPlayerMessage = `Good evening agent ${playerName}. Your destination will be in Singapore, within the inonic Marina Bay Sands. Your target is Specter, the infamous global crime syndicate. We have reason to believe they have taken up residency in the building and your mission objective is to cripple their operations. You will be dropped outside the building and will have to make your own way in and figure out a way to bring them down. Good luck agent player1, we are counting on you.`;
+  const newPlayerMessage = `Good evening agent ${playerName}. Your destination will be in Singapore, within the inonic Marina Bay Sands. Your target is Specter, the infamous global crime syndicate. We have reason to believe they have taken up residency in the building and your mission objective is to cripple their operations. You will be dropped outside the building and will have to make your own way in and figure out a way to bring them down. Good luck agent ${playerName}, we are counting on you.`;
   try {
     const newPlayer = await createNewPlayer(playerName);
     console.log(newPlayer);
