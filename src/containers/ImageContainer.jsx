@@ -75,7 +75,7 @@ const ImageMap = ({
       {room.clickableAreas.map((area, index) => (
         <div
           key={index}
-          className="fixed bg-red-500 opacity-50 pointer-events-none"
+          className="fixed bg-red-500 opacity-0 pointer-events-none"
           style={{
             top: area.y1,
             left: area.x1,
