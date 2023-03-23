@@ -8,7 +8,7 @@ export const ChatBubbleSend = ({ text }) => {
         <div className="text-xl font-medium text-black">You</div>
         <p className="text-slate-500">{text}</p>
       </div>
-      <img src={bond} alt="ChitChat Logo" className="h-12 w-12" />
+      <img src={bond} alt="James Bond" className="h-12 w-12" />
     </div>
   );
 };
