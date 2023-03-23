@@ -12,6 +12,27 @@ const Sidebar = ({resetGame, startNewGame}) => {
   const toggleMusic = () => {
     setIsMusicPlaying(prevState => !prevState);
   }
+
+  const getMusicButton = () => {
+    if (isMusicPlaying) {
+      return (
+        <SidebarIcon
+          icon={<GoMute size="22" />}
+          text="Stop Music"
+          onClick={toggleMusic}
+        />
+      );
+    } else {
+      return (
+        <SidebarIcon
+          icon={<GoUnmute size="22" />}
+          text="Play Music"
+          onClick={toggleMusic}
+        />
+      );
+    }
+  };
+  
   
 
   const handleResetClick = () => {
@@ -30,9 +51,7 @@ const Sidebar = ({resetGame, startNewGame}) => {
         <SidebarIcon icon={<AiOutlineCloud size="28" />} text="Load Existing Game"/>
         <SidebarIcon icon={<MdLeaderboard size="20" />} text="Leaderboard" />
         <SidebarIcon icon={<VscDebugRestart size="20" />} text="Restart Game" onClick={handleResetClick}/>
-        <SidebarIcon icon={<BsGearFill size="22" />} text="Settings" />
-        <SidebarIcon icon={<GoMute size="22" />} text="Stop Music" onClick={toggleMusic}/> 
-        <SidebarIcon icon={<GoUnmute size="22" />} text="Play Music" onClick={toggleMusic}/> 
+        {getMusicButton()}
         <AudioPlayer isMusicPlaying={isMusicPlaying}/>
     </div>
     
@@ -57,3 +76,4 @@ const SidebarIcon = ({icon, text, onClick}) => {
 // The group-hover class is a variant of the group class that allows you to apply styles to child elements when the parent element is hovered over. In this case, the group-hover:scale-100 class is applied to the .sidebar-tooltip element, which sets its scale to 100 when the parent .sidebar-icon element is hovered over.
 
 export default Sidebar;
+
