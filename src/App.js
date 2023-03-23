@@ -7,6 +7,7 @@ import Sidebar from "./containers/Sidebar";
 import { deleteGame, deletePlayer, getGameById } from "./Api";
 import Confetti from "./Confetti";
 import AudioPlayer from "./components/AudioPlayer";
+import NamePopup from "./components/NamePopup";
 
 function App() {
   // For each state variable, checks if there is any data in the sessionStorage for the corresponding key.
@@ -18,7 +19,8 @@ function App() {
   const [playerId, setPlayerId] = useState(null);
   const [gameId, setGameId] = useState(null);
   const [currentRoom, setCurrentRoom] = useState("plaza");
-  // const [startConfetti, setStartConfetti] = useState(false)
+  const [playerName, setPlayerName] = useState('');
+  const [isNamePopupVisible, setIsNamePopupVisible] = useState(true);
   const [uiProps, setUiProps] = useState({
     showConfetti: false
   });
@@ -37,18 +39,11 @@ function App() {
     checkIfPopup();
   }, [currentRoom])
 
-  // useEffect(() => {
-  //   const gameStatus = getGameById(playerId);
-  //   console.log(gameStatus.playerHasWon)
-  // }, [currentRoom])
 
-  // const [isAppInitialised, setIsAppInitialised] = useState(false);
-
-  // checks if all state variables are empty arrays (i.e., no data is found in sessionStorage), and if so,
-  // it calls the initialiseApp function to fetch data from the backend and set the initial state.
-  useEffect(() => {
+  const handleNameSubmit = (playerName) => {
+    setIsNamePopupVisible(false);
     initialiseApp(
-      "James Bondage",
+      playerName,
       setMessages,
       setPlayerItems,
       setRoomsYouCanEnter,
@@ -56,7 +51,7 @@ function App() {
       setGameId,
       setCurrentRoom
     );
-  }, []);
+  };
 
   // UseEffect hooks listen for changes in their respective state variables (messages, playerItems, and roomsYouCanEnter).
   // When the state changes, the hook updates the sessionStorage with the latest state data.
@@ -120,6 +115,7 @@ function App() {
 
   return (
     <>
+      {isNamePopupVisible && <NamePopup onNameSubmit={handleNameSubmit} setPlayerName={setPlayerName} playerName={playerName}/>}
       {uiProps.showConfetti && <Confetti />}
       <div className="h-screen">
         <ImageContainer
