@@ -33,8 +33,6 @@ const Sidebar = ({resetGame, startNewGame}) => {
     }
   };
   
-  
-
   const handleResetClick = () => {
     resetGame();
   };

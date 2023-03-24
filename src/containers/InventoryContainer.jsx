@@ -55,9 +55,6 @@ export const InventoryContainer = ({
     const filteredItems = items.filter(
       (item) => playerItems && playerItems.includes(item.title.toLowerCase())
     );
-    console.log(playerItems);
-    console.log(filteredItems);
-    console.log("USEEFFECT TRIGGERED!")
     const itemsToDisplay = filteredItems.map((item) => (
       <li key={item.id}>
         <InventoryItem

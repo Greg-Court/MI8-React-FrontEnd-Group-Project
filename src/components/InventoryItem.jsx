@@ -17,7 +17,6 @@ export const InventoryItem = ({item, itemIcon, text, messages, playerId,
       ]);
       setPlayerItems(nextMoveResponse.inventory);
       setRoomsYouCanEnter(nextMoveResponse.roomsYouCanEnter);
-      console.log(nextMoveResponse)
     } catch (error) {
       console.log(error);
     } 
